@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.myhome.apt.model.mapper.AptMapper">
+
+	<select id="getApt" parameterType="map" resultType="AptDto">
+		select *
+		<if test="userId !=null">
+			, if(b.userId is null, 0, 1) as likeStatus
+		</if>
+		from houseinfo a 
+		<if test="userId !=null">
+			left outer join (select * from user_houseinfo_like where userId =#{userId}) b on a.aptCode = b.aptCode		
+		</if>
+		where 1=1 and a.dongCode = 
+			(select dongCode 
+				from dongcode 
+				where sidoName=#{sidoName}
+			and gugunName=#{gugunName}
+			and dongName=#{dongName})
+	</select>
+	
+	<insert id="saveKeyword" parameterType="map">
+		insert into search_keyword (keyword,userId)
+		values (#{keyword},#{userId})
+	</insert>
+	
+	<select id="dealSearch" parameterType="String">
+		select * from housedeal
+		where aptCode=#{aptCode}
+		order by dealYear desc,dealMonth desc,dealDay desc
+	</select>
+	
+	<select id="getValidYear" parameterType="String" resultType="int">
+		select distinct dealYear 
+		from housedeal 
+		where aptCode = ${aptCode} 
+		order by dealYear; 
+	</select>
+	
+	<insert id="likeApt" parameterType="map">
+		insert into user_houseinfo_like (userId,aptCode)
+		value (#{userId},#{aptCode})
+	</insert>
+	
+	<delete id="deletelikeApt" parameterType="map">
+		delete from user_houseinfo_like
+		where userId=#{userId} and aptCode=#{aptCode}
+	</delete>
+</mapper>

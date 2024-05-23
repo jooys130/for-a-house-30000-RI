@@ -1,0 +1,1 @@
+import{_ as o,r as _,o as t,c,e as n}from"./index-03511842.js";const r={},s={id:"container"};function a(i,d){const e=_("router-view");return t(),c("div",s,[n(e)])}const f=o(r,[["render",a],["__scopeId","data-v-9f1a3205"]]);export{f as default};
