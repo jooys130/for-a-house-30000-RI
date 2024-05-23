@@ -1,0 +1,1 @@
+import{_ as o,r as _,o as t,c as r,e as c}from"./index-03511842.js";const a={},n={id:"boardView"};function s(d,i){const e=_("router-view");return t(),r("div",n,[c(e)])}const l=o(a,[["render",s],["__scopeId","data-v-0d1a1d03"]]);export{l as default};

@@ -1,0 +1,72 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* h1 글씨체 적용한 버전 */
+.custom_h1 {
+  font-family: gBold;
+  padding: 20px;
+}
+/* h2 글씨체 적용한 버전 */
+.custom_h2 {
+  font-family: gMedium;
+  padding: 10px;
+}
+/* p 글씨체 적용한 버전 */
+.custom_p {
+  font-family: gLight;
+}
+
+/* 흰색 버튼 모양 (크기 임의 조절 필요) */
+.w_round_bar {
+  background-color: whitesmoke;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 파란색 버튼 모양 (크기 임의 조절 필요) */
+.b_round_bar {
+  /* background-color: rgb(210, 180, 169);*/
+  /* background-color: rgba(80, 109, 122, 0.7); */
+  background-color: #f0f6ff;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* div 사이즈 통일 big */
+.size_big {
+  width: 250px;
+  height: 70px;
+  font-size: large;
+}
+
+/* div 사이즈 통일 mid */
+.size_mid {
+  width: 200px;
+  height: 50px;
+  font-size: large;
+}
+
+/* div 사이즈 통일 small */
+.size_sm {
+  width: 70px;
+  height: 40px;
+}

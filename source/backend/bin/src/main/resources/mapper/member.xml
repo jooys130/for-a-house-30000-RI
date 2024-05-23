@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.myhome.user.model.mapper.UserMapper">
+
+	<select id="login" parameterType="userDto" resultType="userDto">
+		select userId, name, refreshToken
+		from user
+		where userId = #{userId} and password = #{password}
+	</select>
+	
+	<select id="userInfo" parameterType="string" resultType="userDto">
+		select name, userId, birthYear, sex, type, emailAccount, emailDomain, createdTime
+		from user
+		where userId = #{userId}
+	</select>
+	
+	<update id="saveRefreshToken" parameterType="map">
+		update user
+		set refreshToken = #{token}
+		where userId = #{userId}; 
+	</update>
+	
+	<select id="getRefreshToken" parameterType="string" resultType="string">
+		select refreshToken
+		from user
+		where userId = #{userId}; 
+	</select>
+	
+	<update id="deleteRefreshToken" parameterType="map">
+		update user
+		set refreshToken = #{token, jdbcType=VARCHAR}
+		where userId = #{userId}; 
+	</update>
+	
+	<insert id="regist" parameterType="userDto">
+		insert into user(userId, name, password, birthYear, sex, emailAccount, emailDomain, type)
+		values (#{userId}, #{name}, #{password}, #{birthYear}, #{sex}, #{emailAccount}, #{emailDomain}, 1); 
+	</insert>
+	
+	<update id="modifyPassword" parameterType="map">
+		update user
+		set refreshToken = #{token, jdbcType=VARCHAR}
+		where userId = #{userId}; 
+	</update>
+	
+	<delete id="deleteUser" parameterType="string">
+		delete from user 
+		where userId = #{userId}; 
+	</delete>
+</mapper>
